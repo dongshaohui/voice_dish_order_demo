@@ -63,8 +63,10 @@ def event_dispatch(wechat_instance):
 	elif wechat_instance.message.type == 'click':
 		key = wechat_instance.message.key
 		response = click(wechat_instance,key)
-	elif isinstance(message,VoiceMessage): # 语音消息
+	elif isinstance(wechat_instance.message,VoiceMessage): # 语音消息
 		print "this is voice message!"
+	elif isinstance(wechat_instance.message,TextMessage): # 文字信息
+		print "this is text message"
 	return response
 
 
