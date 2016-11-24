@@ -63,7 +63,9 @@ def event_dispatch(wechat_instance):
 	elif isinstance(wechat_instance.message,VoiceMessage): # 语音消息
 		print "this is voice message!"
 		print "The voice message is below:"
-		print wechat_instance.message.content
+		print wechat_instance.message.media_id
+		print wechat_instance.message.format
+		print wechat_instance.message.recognition
 	elif isinstance(wechat_instance.message,TextMessage): # 文字信息
 		print "this is text message"
 		print wechat_instance.message.content
