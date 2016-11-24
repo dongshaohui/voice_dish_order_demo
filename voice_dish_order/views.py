@@ -8,7 +8,6 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from wechatpy import WeChatClient
-from yiyuanduobao_shop.models import *
 from weixin import handler as HD
 from weixin.backends.dj import Helper, sns_userinfo
 from weixin import WeixinHelper, JsApi_pub, WxPayConf_pub, UnifiedOrder_pub,Redpack_pub, Notify_pub, catch
