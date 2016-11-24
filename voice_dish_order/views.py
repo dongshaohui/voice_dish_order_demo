@@ -50,9 +50,6 @@ def do(request):
 
 
 def event_dispatch(wechat_instance):
-	print "event_dispatch"
-	print wechat_instance.message
-	print wechat_instance.message.type
 	response = ""
 	if wechat_instance.message.type == 'subscribe':
 		key = wechat_instance.message.key
@@ -65,8 +62,11 @@ def event_dispatch(wechat_instance):
 		response = click(wechat_instance,key)
 	elif isinstance(wechat_instance.message,VoiceMessage): # 语音消息
 		print "this is voice message!"
+		print "The voice message is below:"
+		print wechat_instance.message
 	elif isinstance(wechat_instance.message,TextMessage): # 文字信息
 		print "this is text message"
+		print wechat_instance.message
 	return response
 
 
