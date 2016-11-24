@@ -13,6 +13,7 @@ from weixin.backends.dj import Helper, sns_userinfo
 from weixin import WeixinHelper, JsApi_pub, WxPayConf_pub, UnifiedOrder_pub,Redpack_pub, Notify_pub, catch
 from wechat_sdk import WechatConf
 from wechat_sdk import WechatBasic
+from wechat_sdk.messages import TextMessage,ImageMessage,VoiceMessage
 import json
 # Create your views here.
 conf_instance = WechatConf(
@@ -48,6 +49,9 @@ def do(request):
 
 
 def event_dispatch(message):
+	print "event_dispatch"
+	print message
+	print message.type
 	response = ""
 	if wechat_instance.message.type == 'subscribe':
 		key = wechat_instance.message.key
@@ -58,6 +62,8 @@ def event_dispatch(message):
 	elif wechat_instance.message.type == 'click':
 		key = wechat_instance.message.key
 		response = click(wechat_instance,key)
+	elif isinstance(message,VoiceMessage): # 语音消息
+		print "this is voice message!"
 	return response
 
 
